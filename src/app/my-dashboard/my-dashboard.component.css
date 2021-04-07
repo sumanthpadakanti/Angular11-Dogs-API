@@ -1,0 +1,51 @@
+.main-container {
+padding: 10px;
+}
+
+.grid-container {
+display: inherit; 
+margin: 20px;
+}
+
+.flex-container { 
+display: flex;
+flex-wrap: wrap; 
+flex-shrink: 1; 
+flex-basis: auto; 
+}
+
+.dashboard-card {
+left: 10px; 
+right: 10px;
+margin-bottom: 2%;
+flex-shrink: 1;
+flex-grow: 1;
+}
+form mat-form-field:nth-child(2) {
+    margin-left: 15px;
+}
+.button-get {
+    margin-right: 15px;
+}
+/* .breed {
+    display: inline;
+    width: 10%;
+}
+.sub-breed {
+    display: inline;
+    width: 10%;
+} */
+
+.more-button {
+position: absolute;
+top: 5px;
+right: 10px;
+}
+
+.dashboard-card-content {
+text-align: left;
+}
+
+.example-header-image {
+background-size: cover;
+}

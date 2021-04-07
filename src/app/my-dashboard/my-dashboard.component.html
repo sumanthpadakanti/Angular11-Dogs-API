@@ -1,0 +1,65 @@
+<div class="main-container">
+  <div class="row">
+    <div class="col-sm-4">
+      <form>
+        <mat-form-field>
+          <mat-select placeholder="Select breed" [(ngModel)]="selectedBreed" name="breed" class="breed"
+            (ngModelChange)="selectBreed($event)">
+            <mat-option *ngFor="let breed of breeds" [value]="breed">
+              {{breed}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field *ngIf="subBreeds">
+          <mat-select placeholder="Select sub-breed" [(ngModel)]="selectedSubBreed" name="sub-breed" align="right"
+            class="sub-breed" (ngModelChange)="selectSubBreed($event)">
+            <mat-option *ngFor="let subBreed of subBreeds" [value]="subBreed">
+              {{subBreed}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </form>
+    </div>
+    <div class="col-sm-8 btns" align="right">
+      <button mat-flat-button color="primary" class="button-get" (click)="getBreeds(selectedBreed, selectedSubBreed)"
+        align="center" [disabled]="disable">Get Breeds</button>
+      <button mat-flat-button color="primary" (click)="addBreed(selectedBreed, selectedSubBreed)" align="center"
+        [disabled]="disable">Add Breed</button>
+    </div>
+  </div>
+</div>
+<mat-divider></mat-divider>
+<div class="grid-container">
+  <mat-grid-list cols="2" style="padding: 5%">
+    <mat-card class="dashboard-card" *ngFor="let card of cards">
+      <mat-card-header>
+        <!-- Static avatar image for card-->
+        <img mat-card-avatar class="example-header-image"
+          src="https://material.angular.io/assets/img/examples/shiba1.jpg">
+        <mat-card-title>Dogy {{card.id}}</mat-card-title>
+        <mat-card-subtitle>
+          <i *ngIf="selectedBreed">Breed: {{selectedBreed}}</i>
+          <i *ngIf="subBreeds && selectedSubBreed"> Sub Breed: {{selectedSubBreed}}</i>
+        </mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image src="{{card.pic}}" alt="Photo of a dog">
+      <!-- Static content of card-->
+      <mat-card-content class="dashboard-card-content">
+        <p>
+          The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan. A small, agile
+          dog that copes
+          very well with mountainous terrain, the Shiba Inu was originally bred for hunting.
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button (click)="count(card)">
+          <b>{{card.likes}} </b>
+          <i class="material-icons">
+            favorite_border
+          </i>
+        </button>
+        <button mat-button (click)="closeCard(card)">REMOVE</button>
+      </mat-card-actions>
+    </mat-card>
+  </mat-grid-list>
+</div>
